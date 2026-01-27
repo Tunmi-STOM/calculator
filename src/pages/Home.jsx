@@ -2,7 +2,7 @@ function Home({ goToCalc }) {
   return (
     <div className="home">
       <h1>Calculator</h1>
-      <p>Fast • Offline • Keyboard Enabled</p>
+      <p>Fast • Keyboard Enabled</p>
       <button onClick={goToCalc}>Open Calculator</button>
     </div>
   );
