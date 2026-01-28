@@ -5,7 +5,7 @@
 
 body {
   margin: 0;
-  background: #111;
+  background: #07d318;
   color: white;
 }
 
@@ -14,8 +14,8 @@ body {
   align-self: flex-start;
   margin-bottom: 1rem;
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: rgb(0, 0, 0);
+  border: 1px solid white;
   cursor: pointer;
 }
 
