@@ -54,20 +54,56 @@ function Calculator({ goHome }) {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  return (
-    <div className="calculator-page">
-      <button className="back" id="goBack" onClick={goHome}>← Home</button>
+  const applyFactorialToLastNumber = () => {
+  // match the LAST number in the expression
+  const match = input.match(/(\d+)(?!.*\d)/);
 
-      <Display value={input} />
-      <Keypad
-        add={add}
-        clear={clear}
-        backspace={backspace}
-        equals={equals}
-        factorial={doFactorial}
-      />
-      <History history={history} />
-    </div>
+  if (!match) {
+    setInput("Error");
+    return;
+  }
+
+  const number = Number(match[0]);
+  const fact = factorial(number);
+
+  if (isNaN(fact)) {
+    setInput("Error");
+    return;
+  }
+
+  // replace only the last number with its factorial
+  const newInput =
+    input.slice(0, match.index) + fact.toString();
+
+  setInput(newInput);
+
+  // also update tokens correctly
+  setTokens((prev) => {
+    const copy = [...prev];
+    copy.splice(match.index, match[0].length, ...fact.toString());
+    return copy;
+  });
+};
+
+
+  return (
+    <div className="calculator-shell">
+  <header className="calc-header">
+    <button className="back-btn" onClick={goHome}>←</button>
+    <h2>Calculator</h2>
+  </header>
+
+  <Display value={input} />
+  <Keypad
+    add={add}
+    clear={clear}
+    backspace={backspace}
+    equals={equals}
+    factorial={applyFactorialToLastNumber}
+  />
+  <History history={history} />
+</div>
+
   );
 }
 

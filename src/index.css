@@ -13,13 +13,13 @@
 * {
   box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
-  text-align: center;
 }
 
 body {
   margin: 0;
   background: radial-gradient(circle at top, #020617, #000);
   color: var(--text);
+  text-align: center;
 }
 
 .calculator-shell {
@@ -49,6 +49,7 @@ body {
   font-size: 1.4rem;
   border: none;
   cursor: pointer;
+  align-items: flex-end;
 }
 
 .display {
