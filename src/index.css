@@ -1,57 +1,131 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --display: #020617;
+  --btn: #1f2933;
+  --btn-hover: #374151;
+  --accent: #22c55e;
+  --danger: #ef4444;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+}
+
 * {
   box-sizing: border-box;
-  font-family: system-ui;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
 }
 
 body {
   margin: 0;
-  background: #07d318;
-  color: white;
+  background: radial-gradient(circle at top, #020617, #000);
+  color: var(--text);
 }
 
-#goBack {
-  text-align: left;
-  align-self: flex-start;
-  margin-bottom: 1rem;
-  background: transparent;
-  color: rgb(0, 0, 0);
-  border: 1px solid white;
-  cursor: pointer;
-}
-
-.home, .calculator-page {
+.calculator-shell {
+  max-width: 360px;
+  margin: auto;
   min-height: 100vh;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-button {
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
+.calc-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.calc-header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.back-btn {
+  background: none;
+  color: var(--muted);
+  font-size: 1.4rem;
   border: none;
+  cursor: pointer;
 }
 
 .display {
-  width: 100%;
-  max-width: 320px;
-  font-size: 2rem;
+  background: var(--display);
+  border-radius: 16px;
+  padding: 1rem;
   margin-bottom: 1rem;
+  font-size: 2.2rem;
   text-align: right;
+  color: white;
+  border: none;
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.6);
 }
 
 .keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  max-width: 320px;
+  gap: 0.75rem;
+}
+
+button {
+  height: 56px;
+  border-radius: 14px;
+  border: none;
+  font-size: 1.1rem;
+  background: var(--btn);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+button:hover {
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+button:nth-child(1) {
+  background: var(--danger);
+}
+
+button:nth-child(4) {
+  background: var(--accent);
+  font-weight: bold;
+  color: #052e16;
 }
 
 .history {
   margin-top: 1rem;
-  max-width: 320px;
+  padding: 0.75rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.history h3 {
+  margin: 0 0 0.5rem;
   font-size: 0.9rem;
-  opacity: 0.8;
+  color: var(--muted);
+}
+
+.history p {
+  margin: 0.2rem 0;
+  color: #cbd5f5;
+}
+
+@media (min-width: 768px) {
+  .calculator-shell {
+    max-width: 400px;
+    padding: 2rem;
+  }
+
+  .display {
+    font-size: 2.6rem;
+  }
 }
